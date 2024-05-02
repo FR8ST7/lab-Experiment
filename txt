@@ -1,0 +1,3 @@
+first git bash install kr
+then vs code open kr
+then repository clone kr 
