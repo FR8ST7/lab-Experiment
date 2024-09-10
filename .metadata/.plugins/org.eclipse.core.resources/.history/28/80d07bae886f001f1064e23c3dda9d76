@@ -1,0 +1,90 @@
+package laboops;
+
+	abstract class Shape {
+	    String color;
+	    int sides;
+
+	    // Constructor
+	    Shape(String color, int sides) {
+	        this.color = color;
+	        this.sides = sides;
+	    }
+
+	    // Abstract method to calculate the area
+	    abstract double calcArea();
+
+	    // Non-abstract method to display shape details
+	    void display() {
+	        System.out.println("Color: " + color);
+	        System.out.println("Number of Sides: " + sides);
+	    }
+	}
+
+	class Square extends Shape {
+	    double sideLength;
+
+	    // Constructor
+	    Square(String color, double sideLength) {
+	        super(color, 4); // Square has 4 sides
+	        this.sideLength = sideLength;
+	    }
+
+	    // Override calcArea method
+	    @Override
+	    double calcArea() {
+	        return sideLength * sideLength;
+	    }
+
+	    // Override display to show additional Square details
+	    @Override
+	    void display() {
+	        super.display();
+	        System.out.println("Side Length: " + sideLength);
+	        System.out.println("Area: " + calcArea());
+	    }
+	}
+	
+	class Rectangle extends Shape {
+	    double length;
+	    double width;
+
+	    // Constructor
+	    Rectangle(String color, double length, double width) {
+	        super(color, 4); // Rectangle has 4 sides
+	        this.length = length;
+	        this.width = width;
+	    }
+
+	    // Override calcArea method
+	    @Override
+	    double calcArea() {
+	        return length * width;
+	    }
+
+	    // Override display to show additional Rectangle details
+	    @Override
+	    void display() {
+	        super.display();
+	        System.out.println("Length: " + length);
+	        System.out.println("Width: " + width);
+	        System.out.println("Area: " + calcArea());
+	    }
+	}
+	
+	 class Main {
+	    public static void main(String[] args) {
+	        // Create Square object
+	        Square square = new Square("Red", 5.0);
+	        System.out.println("Square Details:");
+	        square.display();
+	        System.out.println();
+
+	        // Create Rectangle object
+	        Rectangle rectangle = new Rectangle("Blue", 4.0, 6.0);
+	        System.out.println("Rectangle Details:");
+	        rectangle.display();
+	    }
+	}
+
+
+
