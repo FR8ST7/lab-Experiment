@@ -4,7 +4,7 @@ class Square extends Shape {
     double sideLength;
 
     Square(String color, double sideLength) {
-        super(color, 4); // Square has 4 sides
+        super(color, 4);
         this.sideLength = sideLength;
     }
 
