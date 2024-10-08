@@ -1,6 +1,6 @@
 package exception_handling;
 import java.util.Scanner;
-	class exe_handling extends Exception {
+	public class exe_handling extends Exception {
 	    public exe_handling(String message) {
 	        super(message);
 	    }
