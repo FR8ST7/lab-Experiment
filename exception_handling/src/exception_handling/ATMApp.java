@@ -2,7 +2,6 @@ package exception_handling;
 
 import java.util.Scanner;
 
-//Interface for ATM operations
 interface ATMOperations {
  void deposit(double amount);
  void withdraw(double amount) throws WithdrawException;
@@ -10,7 +9,6 @@ interface ATMOperations {
  void changePIN(int newPIN);
 }
 
-//Custom exceptions
 class BalanceException extends Exception {
  public BalanceException(String message) {
      super(message);
@@ -29,13 +27,11 @@ class PinException extends Exception {
  }
 }
 
-//Bank class implementing ATM operations
 class BankAccount implements ATMOperations {
  private double balance;
  private int pin;
  private int pinAttempts = 0;
 
- // Constructor to initialize the account with an initial balance
  public BankAccount(double initialBalance, int pin) throws BalanceException {
      if (initialBalance < 500) {
          throw new BalanceException("Initial balance cannot be less than 500");
@@ -44,14 +40,12 @@ class BankAccount implements ATMOperations {
      this.pin = pin;
  }
 
- // Deposit operation
  @Override
  public void deposit(double amount) {
      balance += amount;
      System.out.println("Amount deposited: " + amount);
  }
 
- // Withdraw operation with exception handling for insufficient balance
  @Override
  public void withdraw(double amount) throws WithdrawException {
      if (balance < amount) {
@@ -61,23 +55,20 @@ class BankAccount implements ATMOperations {
      System.out.println("Amount withdrawn: " + amount);
  }
 
- // Check balance operation
  @Override
  public void checkBalance() {
      System.out.println("Current balance: " + balance);
  }
 
- // Change PIN operation
  @Override
  public void changePIN(int newPIN) {
      pin = newPIN;
      System.out.println("PIN successfully changed");
  }
 
- // PIN validation method
  public boolean validatePIN(int inputPIN) throws PinException {
      if (inputPIN == pin) {
-         pinAttempts = 0; // Reset attempts if successful
+         pinAttempts = 0;
          return true;
      } else {
          pinAttempts++;
@@ -89,13 +80,11 @@ class BankAccount implements ATMOperations {
  }
 }
 
-//Main class for the menu-driven program
 public class ATMApp {
  public static void main(String[] args) {
      Scanner scanner = new Scanner(System.in);
      BankAccount account = null;
 
-     // Initialize bank account with an initial balance and PIN
      try {
          System.out.print("Enter initial balance: ");
          double initialBalance = scanner.nextDouble();
@@ -108,7 +97,6 @@ public class ATMApp {
          return;
      }
 
-     // Menu-driven ATM operations
      int choice;
      do {
          System.out.println("\n--- ATM Menu ---");
@@ -121,7 +109,6 @@ public class ATMApp {
          choice = scanner.nextInt();
 
          try {
-             // PIN validation for every transaction
              System.out.print("Enter your PIN: ");
              int enteredPIN = scanner.nextInt();
              if (!account.validatePIN(enteredPIN)) {
