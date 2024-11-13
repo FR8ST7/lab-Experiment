@@ -19,7 +19,7 @@ public class ChoiceFrame extends JFrame implements ActionListener{
 	choicePanel.add(choiceLabel);
 	
 	JPanel displayPanel= new JPanel(new FlowLayout());
-	JLabel displayLabel= new JLabel("select subject");
+	JLabel displayLabel= new JLabel("selected subject");
 	displayPanel.add(displayLabel);
 	
 	String subjects[]= {"maths","physics"};
